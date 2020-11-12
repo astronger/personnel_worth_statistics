@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('【请填写功能名称】列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <label>姓名：</label>
+                                <input type="text" name="name"/>
+                            </li>
+                            <li>
+                                <label>年龄：</label>
+                                <input type="text" name="age"/>
+                            </li>
+                            <li>
+                                <label>电话号码：</label>
+                                <input type="text" name="phone"/>
+                            </li>
+                            <li>
+                                <label>职位：</label>
+                                <input type="text" name="position"/>
+                            </li>
+                            <li>
+                                <label>性别：</label>
+                                <input type="text" name="gender"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="loveImes"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question1"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question2"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question3"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question4"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question5"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question6"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question7"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question8"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question9"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question10"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question11"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question12"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question13"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question14"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question15"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question16"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question17"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question18"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question19"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question20"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question21"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question22"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question23"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question24"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question25"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question26"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question27"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question28"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question29"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question30"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question31"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question32"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question33"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question34"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question35"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question36"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question37"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question38"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question39"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question40"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question41"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question42"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question43"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question44"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question45"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question46"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question47"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question48"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question49"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question50"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question51"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question52"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question53"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question54"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question55"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question56"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question57"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question58"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question59"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question60"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question61"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question62"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question63"/>
+                            </li>
+                            <li>
+                                <label>恋爱次数：</label>
+                                <input type="text" name="question64"/>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="system:question:add">
+                    <i class="fa fa-plus"></i> 添加
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="system:question:edit">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:question:remove">
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:question:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('system:question:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('system:question:remove')}]];
+        var prefix = ctx + "system/question";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "【请填写功能名称】",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'id', 
+                    title: '主键id',
+                    visible: false
+                },
+                {
+                    field: 'name', 
+                    title: '姓名'
+                },
+                {
+                    field: 'age', 
+                    title: '年龄'
+                },
+                {
+                    field: 'phone', 
+                    title: '电话号码'
+                },
+                {
+                    field: 'position', 
+                    title: '职位'
+                },
+                {
+                    field: 'address', 
+                    title: '地址'
+                },
+                {
+                    field: 'gender', 
+                    title: '性别'
+                },
+                {
+                    field: 'loveImes', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question1', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question2', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question3', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question4', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question5', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question6', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question7', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question8', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question9', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question10', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question11', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question12', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question13', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question14', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question15', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question16', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question17', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question18', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question19', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question20', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question21', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question22', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question23', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question24', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question25', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question26', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question27', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question28', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question29', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question30', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question31', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question32', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question33', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question34', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question35', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question36', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question37', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question38', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question39', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question40', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question41', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question42', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question43', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question44', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question45', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question46', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question47', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question48', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question49', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question50', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question51', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question52', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question53', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question54', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question55', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question56', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question57', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question58', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question59', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question60', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question61', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question62', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question63', 
+                    title: '恋爱次数'
+                },
+                {
+                    field: 'question64', 
+                    title: '恋爱次数'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

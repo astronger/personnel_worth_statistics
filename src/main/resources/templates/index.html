@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深圳市xxx科技有限公司</title>
+    <script type="text/javascript"  src="js/jquery-3.4.1.min.js"></script>
+    <!--    <script src="js/materialize.min.js"></script>-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!--    <link rel="stylesheet" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/tooplate.css">
+    <script src="js/zoomify.min.js" type="text/javascript"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="js/rolldate.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/zoomify.min.css">
+    <script src="bootstrap-3.3.7/js/bootstrap.js" type="text/javascript"></script>
+    <script src='//player.polyv.net/script/polyvplayer.min.js'></script>
+    <link rel="icon" type="image/x-icon" href="../static/favicon/favicon.ico">
+    <link rel="stylesheet" href="css/icon/iconfont.css">
+
+
+    <script src="js/base64image.js" type="text/javascript"></script>
+    <script src="js/exif.js" type="text/javascript"></script>
+    <script src="js/lrz.bundle.js"></script>
+    <style type="text/css">
+        #show-company-data{
+            position: absolute;
+            z-index: 1;
+            height: 200px;
+            left: 50%;
+        }
+        .my-modal{
+            display: block;
+            z-index: 2;
+            right: 0;
+            background-color: #fafafa;
+            max-height: 70%;
+            overflow-y: auto;
+            border-radius: 2px;
+            width:auto;
+            position:absolute;
+            left:0;
+            top:60%;
+            margin:-1px 0 0 -150px
+        }
+        .my-modal-head{
+            color: black;
+            height: 50px;
+        }
+        .my-modal-content{
+            padding-left: 10px;
+            padding-right: 10px;
+            line-height: 25px;
+        }
+        .my-modal-footer{
+            height: 60px;
+            line-height: 55px;
+        }
+        .icon-close{
+            font-size: 25px;
+            float: right;
+            margin: 9px;
+        }
+        p{
+            line-height: 15px;
+        }
+    </style>
+</head>
+
+<body id="application">
+
+<div class="container">
+    <div class="row">
+
+        <header class="mt-5 mb-5 text-center">
+            <p style="font-size: 22px"><strong>深圳市xxx科技有限公司</strong></p>
+            <img style="height: 50px;width: 100px" src="img/hrt.jpg">
+
+        </header>
+        <form id="forms" class="tm-form-white tm-font-big" >
+            <div>
+                <div class="form-group">
+                    <label class="col-sm-8 control-label is-required">姓名：</label>
+                    <div class="col-sm-8">
+                        <input name="name" class="form-control" type="text" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-8 control-label is-required">年龄：</label>
+                    <div class="col-sm-8">
+                        <input name="age" class="form-control" type="text"  oninput='this.value=this.value.replace(/[^0-9]*$/,"")' onblur='this.value=this.value.replace(/^[0]+[0-9]*$/gi,"")'  minlength="2" maxlength="2" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-8 control-label is-required">电话号码：</label>
+                    <div class="col-sm-8">
+                        <input name="phone" id="phone" class="form-control" type="text"  onblur="ckeePhone(this.value)"  maxlength="11"  required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-8 control-label is-required">职位：</label>
+                    <div class="col-sm-8">
+                        <input name="position" class="form-control" type="text" required>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">现居住地址：</label>
+                <div class="col-sm-8">
+                    <textarea name="address" class="form-control" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-8 control-label is-required">性别：</label>
+                <div class="col-sm-8">
+                    <label class="mr-4">
+                        <input class="with-gap" name="gender" type="radio" value="男"/>
+                        <span>男</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" value="女"/>
+                        <span>女</span>
+                    </label>
+                </div>
+            </div>
+
+            <h2 style="color: red">  答题说明：请为每题选择一个代表你真实想法的选项，在10分钟内交卷。
+                <!--请完成下面的问题：完全如此，请打2分，基本符合，请打1分，完全不是，请打0分--></h2>
+            <div class="form-group">
+                <label class="col-sm-8 control-label is-required">1.我满脑子创业，并有所行动：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question1" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question1" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question1" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">2.我会理财，让钱能生钱：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question2" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question2" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question2" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">3.我比其他朋友或同学收入相对较高：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question3" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question3" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question3" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">4.我有独特的项目并形成了行动力：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question4" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question4" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question4" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">5.我对未来的事情分析较准：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question5" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question5" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question5" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">6.我为团队成功可以得罪人：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question6" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question6" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question6" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">7.我善于外交：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question7" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question7" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question7" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">8.我经常做而不是经常说：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question8" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question8" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question8" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">9.我吃饭很在意营养而且并不多吃：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question9" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question9" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question9" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">10.我每天睡眠平均不少于七小时：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question10" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question10" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question10" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">11.我很平淡看待钱：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question11" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question11" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question11" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">12.我时常忘记苦恼的事情：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question12" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question12" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question12" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">13.我几乎没有仇人，我不恨别人，并不抱怨社会制度：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question13" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question13" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question13" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">14.我每周都运动，不少于两小时：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question14" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question14" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question14" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">15.我可以为了身体健康停下工作：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question15" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question15" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question15" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">16.我明白不良的习惯对身体的危害：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question16" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question16" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question16" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">17.我认为生命是艳丽的，我可以着装与众不同：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question17" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question17" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question17" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">18.我没有手机简直不能生活：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question18" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question18" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question18" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">19.我知道很多种时尚品牌：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question19" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question19" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question19" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">20.我经常参加娱乐活动：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question20" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question20" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question20" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">21.我身上至少有两件饰品，包括美丽的包：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question21" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question21" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question21" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">22.我对一件物品动情即买之：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question22" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question22" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question22" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">23.我经常没钱，并借钱，一年至少一次：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question23" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question23" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question23" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">24.我对度假与玩有兴趣：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question24" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question24" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question24" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">25.我想有更多的压力，只要事业更好：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question25" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question25" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question25" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">26.我强调付出，从不强调收入：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question26" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question26" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question26" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">27.我认为只要为公司着想，突破制度也有必要：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question27" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question27" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question27" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">28.我想一生都不停工作：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question28" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question28" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question28" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">29.我常常为公司发展写出报告或文字：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question29" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question29" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question29" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">30.我经常谈出我对公司发展的看法：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question30" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question30" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question30" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">31.我没有吃过回扣等公司严防的事情：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question31" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question31" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question31" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">32.我经常做家务或公司事务，别人并没有要求的前提下：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question32" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question32" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question32" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">33.我与别人谈话是为了影响或控制别人：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question33" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question33" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question33" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">34.我没有给别人进行情感性打分：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question34" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question34" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question34" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">35.我不会拍马屁：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question35" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question35" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question35" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">36.我能控制混乱的局面：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question36" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question36" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question36" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">37.我喜欢人力资源管理胜过研究与技术：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question37" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question37" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question37" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">38.我想做管官的官，让下级为此而快乐：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question38" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question38" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question38" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">39.我喜欢哲学，并了解宗教：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question39" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question39" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question39" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">40.我认为能处理好下级的分配问题，让他们没有怨言：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question40" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question40" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question40" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">41.我喜欢物理：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question41" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question41" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question41" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">42.我有特殊的创意，并尝试有效果：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question42" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question42" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question42" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">43.我有专利或专利级的产品或技术：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question43" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question43" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question43" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">44.我学习力强并精通某一方面：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question44" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question44" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question44" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">45.我不在意工作对我的汇报，而在于兴趣：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question45" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question45" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question45" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">46.我经常思考或工作不知时间：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question46" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question46" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question46" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">47.我爱看科普类栏目：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question47" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question47" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question47" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">48.我逻辑力强：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question48" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question48" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question48" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">49.我认为家是第一位：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question49" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question49" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question49" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">50.我工作不是为了钱，而是情感：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question50" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question50" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question50" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">51.我不说假话：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question51" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question51" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question51" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">52.我为了爱人失去了很多：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question52" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question52" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question52" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">53.我认为承诺比生命更重要：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question53" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question53" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question53" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">54.我会因为情感而放弃工作或生活的城市：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question54" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question54" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question54" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">55.我时常想起初恋：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question55" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question55" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question55" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">56.我发现爱情对我的激励作用很大：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question56" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question56" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question56" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">57.我经常原谅别人：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question57" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question57" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question57" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">58.我认为我身后有追随者：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question58" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question58" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question58" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">59.我认为自己有品位，而从不说脏话：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question59" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question59" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question59" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">60.我是一个项目专家，并培训别人为胜任力者：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question60" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question60" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question60" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">61.我出席各级名流活动：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question61" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question61" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question61" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">62.我决不拿不属于自己的东西：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question62" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question62" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question62" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">63.我教身边的人做好事：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question63" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question63" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question63" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label">64.我赞同现行的规则，并主动提出见解而不是抱怨：</label>
+                <div class="col-sm-8">
+                    <div>
+                        <label class="mr-4">
+                            <input class="with-gap" name="question64" type="radio" value="2"/>
+                            <span>完全如此</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question64" type="radio" value="1"/>
+                            <span>基本符合</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="question64" type="radio" value="0"/>
+                            <span>完全不是</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <label class="col-sm-8 control-label is-required">截止目前，谈过几次恋爱：</label>
+                <div class="col-sm-8">
+                    <input name="loveImes" class="form-control" type="text"  oninput="this.value=this.value.replace(/[^0-9]/g, '')"   maxlength="2"  required>
+                </div>
+            </div>
+            <br>
+            <div class="text-center mt-5">
+                <input type="submit" class="waves-effect btn-large btn-large-white" value="提交"/>
+            </div>
+            <div id="show-company-data">
+                <ul class="list-group" id="show-company-list">
+                </ul>
+            </div>
+        </form>
+    </div>
+
+</div>
+<footer class="row tm-mt-big mb-3">
+    <div class="col-xl-12 text-center">
+    </div>
+</footer>
+</div>
+
+<script type="text/javascript">
+
+    // $("#forms").validate({
+    //     onkeyup:false
+    // });
+    //去除空格
+    function Trim(str) {
+        var result;
+        result = str.replace(/(^\s+)|(\s+$)/g, "");
+        result = result.replace(/\s/g, "");
+        return result;
+    }
+
+    //验证手机号码
+    function ckeePhone(str){
+        var phone=$("#phone").val();
+        phone=Trim(phone);
+        if (!(/^0{0,1}(13[0-9]|15[0-9]|14[0-9]|18[0-9])[0-9]{8}$/.test(phone))) {
+            alert("手机号码 格式不正确 请重新输入")
+            return false;
+        }
+    }
+
+
+    //提交表单
+
+    $("#forms").submit(function(ev){
+        var question1 = $('input[name=question1]:checked').val();
+        if(question1=="" || question1==null){
+            alert(" 第1题 未做")
+            return false;
+        }
+        var question2 = $('input[name=question2]:checked').val();
+        if(question2=="" || question2==null){
+            alert(" 第2题 未做")
+            return false;
+        }
+        var question3 = $('input[name=question3]:checked').val();
+        if(question3=="" || question3==null){
+            alert(" 第3题 未做")
+            return false;
+        }
+        var question4 = $('input[name=question4]:checked').val();
+        if(question4=="" || question4==null){
+            alert(" 第4题 未做")
+            return false;
+        }
+        var question5 = $('input[name=question5]:checked').val();
+        if(question5=="" || question5==null){
+            alert(" 第5题 未做")
+            return false;
+        }
+        var question6 = $('input[name=question6]:checked').val();
+        if(question6=="" || question6==null){
+            alert(" 第6题 未做")
+            return false;
+        }
+        var question7= $('input[name=question7]:checked').val();
+        if(question7=="" || question7==null){
+            alert(" 第7题 未做")
+            return false;
+        }
+        var question8 = $('input[name=question8]:checked').val();
+        if(question8=="" || question8==null){
+            alert(" 第8题 未做")
+            return false;
+        }
+        var question9 = $('input[name=question9]:checked').val();
+        if(question9=="" || question9==null){
+            alert(" 第9题 未做")
+            return false;
+        }
+        var question10 = $('input[name=question10]:checked').val();
+        if(question10=="" || question10==null){
+            alert(" 第10题 未做")
+            return false;
+        }
+        var question11 = $('input[name=question11]:checked').val();
+        if(question11=="" || question11==null){
+            alert(" 第11题 未做")
+            return false;
+        }
+        var question12 = $('input[name=question12]:checked').val();
+        if(question12=="" || question12==null){
+            alert(" 第12题 未做")
+            return false;
+        }
+        var question13 = $('input[name=question13]:checked').val();
+        if(question13=="" || question13==null){
+            alert(" 第13题 未做")
+            return false;
+        }
+        var question14 = $('input[name=question14]:checked').val();
+        if(question14=="" || question14==null){
+            alert(" 第14题 未做")
+            return false;
+        }
+        var question15 = $('input[name=question15]:checked').val();
+        if(question15=="" || question15==null){
+            alert(" 第15题 未做")
+            return false;
+        }
+        var question16 = $('input[name=question16]:checked').val();
+        if(question16=="" || question16==null){
+            alert(" 第16题 未做")
+            return false;
+        }
+
+        var question17 = $('input[name=question17]:checked').val();
+        if(question17=="" || question17==null){
+            alert(" 第17题 未做")
+            return false;
+        }
+        var question18 = $('input[name=question18]:checked').val();
+        if(question18=="" || question18==null){
+            alert(" 第18题 未做")
+            return false;
+        }
+        var question19 = $('input[name=question19]:checked').val();
+        if(question19=="" || question19==null){
+            alert(" 第19题 未做")
+            return false;
+        }
+        var question20 = $('input[name=question20]:checked').val();
+        if(question20=="" || question20==null){
+            alert(" 第20题 未做")
+            return false;
+        }
+        var question21 = $('input[name=question21]:checked').val();
+        if(question21=="" || question21==null){
+            alert(" 第21题 未做")
+            return false;
+        }
+        var question22 = $('input[name=question22]:checked').val();
+        if(question22=="" || question22==null){
+            alert(" 第22题 未做")
+            return false;
+        }
+        var question23 = $('input[name=question23]:checked').val();
+        if(question23=="" || question23==null){
+            alert(" 第23题 未做")
+            return false;
+        }
+        var question24 = $('input[name=question24]:checked').val();
+        if(question24=="" || question24==null){
+            alert(" 第24题 未做")
+            return false;
+        }
+        var question25 = $('input[name=question25]:checked').val();
+        if(question25=="" || question25==null){
+            alert(" 第25题 未做")
+            return false;
+        }
+        var question26 = $('input[name=question26]:checked').val();
+        if(question26=="" || question26==null){
+            alert(" 第26题 未做")
+            return false;
+        }
+        var question27 = $('input[name=question27]:checked').val();
+        if(question27=="" || question27==null){
+            alert(" 第27题 未做")
+            return false;
+        }
+        var question28 = $('input[name=question28]:checked').val();
+        if(question28=="" || question28==null){
+            alert(" 第28题 未做")
+            return false;
+        }
+        var question29 = $('input[name=question29]:checked').val();
+        if(question29=="" || question29==null){
+            alert(" 第29题 未做")
+            return false;
+        }
+        var question30 = $('input[name=question30]:checked').val();
+        if(question30=="" || question30==null){
+            alert(" 第30题 未做")
+            return false;
+        }
+        var question31 = $('input[name=question31]:checked').val();
+        if(question31=="" || question31==null){
+            alert(" 第31题 未做")
+            return false;
+        }
+        var question32 = $('input[name=question32]:checked').val();
+        if(question32=="" || question32==null){
+            alert(" 第32题 未做")
+            return false;
+        }
+        var question33 = $('input[name=question33]:checked').val();
+        if(question33=="" || question33==null){
+            alert(" 第33题 未做")
+            return false;
+        }
+        var question34= $('input[name=question34]:checked').val();
+        if(question34=="" || question34==null){
+            alert(" 第34题 未做")
+            return false;
+        }
+        var question35 = $('input[name=question35]:checked').val();
+        if(question35=="" || question35==null){
+            alert(" 第35题 未做")
+            return false;
+        }
+        var question36 = $('input[name=question36]:checked').val();
+        if(question36=="" || question36==null){
+            alert(" 第36题 未做")
+            return false;
+        }
+        var question37 = $('input[name=question37]:checked').val();
+        if(question37=="" || question37==null){
+            alert(" 第37题 未做")
+            return false;
+        }
+        var question38 = $('input[name=question38]:checked').val();
+        if(question38=="" || question38==null){
+            alert(" 第38题 未做")
+            return false;
+        }
+        var question39 = $('input[name=question39]:checked').val();
+        if(question39=="" || question39==null){
+            alert(" 第39题 未做")
+            return false;
+        }
+        var question40 = $('input[name=question40]:checked').val();
+        if(question40=="" || question40==null){
+            alert(" 第40题 未做")
+            return false;
+        }
+        var question41 = $('input[name=question41]:checked').val();
+        if(question41=="" || question41==null){
+            alert(" 第41题 未做")
+            return false;
+        }
+        var question42 = $('input[name=question42]:checked').val();
+        if(question42=="" || question42==null){
+            alert(" 第42题 未做")
+            return false;
+        }
+        var question43 = $('input[name=question43]:checked').val();
+        if(question43=="" || question43==null){
+            alert(" 第43题 未做")
+            return false;
+        }
+        var question44 = $('input[name=question44]:checked').val();
+        if(question44=="" || question44==null){
+            alert(" 第44题 未做")
+            return false;
+        }
+        var question45 = $('input[name=question45]:checked').val();
+        if(question45=="" || question45==null){
+            alert(" 第45题 未做")
+            return false;
+        }
+        var question46 = $('input[name=question46]:checked').val();
+        if(question46=="" || question46==null){
+            alert(" 第46题 未做")
+            return false;
+        }
+        var question47 = $('input[name=question47]:checked').val();
+        if(question47=="" || question47==null){
+            alert(" 第47题 未做")
+            return false;
+        }
+        var question48 = $('input[name=question48]:checked').val();
+        if(question48=="" || question48==null){
+            alert(" 第48题 未做")
+            return false;
+        }
+        var question49 = $('input[name=question49]:checked').val();
+        if(question49=="" || question49==null){
+            alert(" 第49题 未做")
+            return false;
+        }
+        var question50 = $('input[name=question50]:checked').val();
+        if(question50=="" || question50==null){
+            alert(" 第50题 未做")
+            return false;
+        }
+        var question51 = $('input[name=question51]:checked').val();
+        if(question51=="" || question51==null){
+            alert(" 第51题 未做")
+            return false;
+        }
+        var question52 = $('input[name=question52]:checked').val();
+        if(question52=="" || question52==null){
+            alert(" 第52题 未做")
+            return false;
+        }
+        var question53 = $('input[name=question53]:checked').val();
+        if(question53=="" || question53==null){
+            alert(" 第53题 未做")
+            return false;
+        }
+        var question54 = $('input[name=question54]:checked').val();
+        if(question54=="" || question54==null){
+            alert(" 第54题 未做")
+            return false;
+        }
+        var question55 = $('input[name=question55]:checked').val();
+        if(question55=="" || question55==null){
+            alert(" 第55题 未做")
+            return false;
+        }
+        var question56 = $('input[name=question56]:checked').val();
+        if(question56=="" || question56==null){
+            alert(" 第56题 未做")
+            return false;
+        }
+        var question57 = $('input[name=question57]:checked').val();
+        if(question57=="" || question57==null){
+            alert(" 第57题 未做")
+            return false;
+        }
+        var question58 = $('input[name=question58]:checked').val();
+        if(question58=="" || question58==null){
+            alert(" 第58题 未做")
+            return false;
+        }
+        var question59 = $('input[name=question59]:checked').val();
+        if(question59=="" || question59==null){
+            alert(" 第59题 未做")
+            return false;
+        }
+        var question60 = $('input[name=question60]:checked').val();
+        if(question60=="" || question60==null){
+            alert(" 第60题 未做")
+            return false;
+        }
+        var question61 = $('input[name=question61]:checked').val();
+        if(question61=="" || question61==null){
+            alert(" 第61题 未做")
+            return false;
+        }
+        var question62 = $('input[name=question62]:checked').val();
+        if(question62=="" || question62==null){
+            alert(" 第62题 未做")
+            return false;
+        }
+        var question63 = $('input[name=question63]:checked').val();
+        if(question63=="" || question63==null){
+            alert(" 第63题 未做")
+            return false;
+        }
+        var question64 = $('input[name=question64]:checked').val();
+        if(question54=="" || question64==null){
+            alert(" 第64题 未做")
+            return false;
+        }
+        var gender = $('input[name=gender]:checked').val();
+        if(gender=="" || gender==null){
+            alert("请选择性别！")
+            return false;
+        }
+        $.ajax({
+            url: "/add",
+            type: "post",
+            contentType : "application/x-www-form-urlencoded;charset=UTF-8",
+            dataType: "json",
+            data: $('#forms').serialize(),
+            success: function (result) {
+                // alert(result)
+                if (result == "1") {
+                    alert("提交成功，请告知工作人员...");
+                    window.location.href = "http://www.xxx.com/";
+                }else {
+                    alert("服务器异常，请联系工作人员...");
+                    window.location.href = "http://www.xxx.com/";
+                }
+            }
+        });
+        ev.preventDefault();
+    })
+
+</script>
+</body>
+
+</html>

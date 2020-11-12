@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:zoom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深圳市xxx科技有限公司</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/tooplate.css">
+    <script src="js/zoomify.min.js" type="text/javascript"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="js/rolldate.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/zoomify.min.css">
+    <script src="bootstrap-3.3.7/js/bootstrap.js" type="text/javascript"></script>
+    <script src='//player.polyv.net/script/polyvplayer.min.js'></script>
+    <link rel="icon" type="image/x-icon" href="../static/favicon/favicon.ico">
+    <link rel="stylesheet" href="css/icon/iconfont.css">
+
+
+    <script src="js/base64image.js" type="text/javascript"></script>
+    <script src="js/exif.js" type="text/javascript"></script>
+    <script src="js/lrz.bundle.js"></script>
+<!--    <style type="text/css">-->
+<!--        #show-company-data{-->
+<!--            position: absolute;-->
+<!--            z-index: 1;-->
+<!--            height: 200px;-->
+<!--            left: 50%;-->
+<!--        }-->
+<!--        .my-modal{-->
+<!--            display: block;-->
+<!--            z-index: 2;-->
+<!--            right: 0;-->
+<!--            background-color: #fafafa;-->
+<!--            max-height: 70%;-->
+<!--            overflow-y: auto;-->
+<!--            border-radius: 2px;-->
+<!--            width:auto;-->
+<!--            position:absolute;-->
+<!--            left:0;-->
+<!--            top:60%;-->
+<!--            margin:-1px 0 0 -150px-->
+<!--        }-->
+<!--        .my-modal-head{-->
+<!--            color: black;-->
+<!--            height: 50px;-->
+<!--        }-->
+<!--        .my-modal-content{-->
+<!--            padding-left: 10px;-->
+<!--            padding-right: 10px;-->
+<!--            line-height: 25px;-->
+<!--        }-->
+<!--        .my-modal-footer{-->
+<!--            height: 60px;-->
+<!--            line-height: 55px;-->
+<!--        }-->
+<!--        .icon-close{-->
+<!--            font-size: 25px;-->
+<!--            float: right;-->
+<!--            margin: 9px;-->
+<!--        }-->
+<!--        p{-->
+<!--            line-height: 15px;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-questions-add">
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">姓名：</label>
+            <div class="col-sm-8">
+                <input name="name" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">年龄：</label>
+            <div class="col-sm-8">
+                <input name="age" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">电话号码：</label>
+            <div class="col-sm-8">
+                <input name="phone" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">职位：</label>
+            <div class="col-sm-8">
+                <input name="position" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">地址：</label>
+            <div class="col-sm-8">
+                <textarea name="address" class="validate tm-input-white-bg" required></textarea>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">性别：</label>
+            <div class="col-sm-8">
+                <input name="gender" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">恋爱次数：</label>
+            <div class="col-sm-8">
+                <input name="loveImes" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="black-text mb-4 big">1.我满脑子创业，并有所行动：</label>
+            <div class="col-sm-8">
+                <input name="question1" class="validate tm-input-white-bg" type="text" required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">2.我会理财，让钱能生钱：</label>
+            <div class="col-sm-8">
+                <input name="question2" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">3.我比其他朋友或同学收入相对较高：</label>
+            <div class="col-sm-8">
+                <input name="question3" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">4.我有独特的项目并形成了行动力：</label>
+            <div class="col-sm-8">
+                <input name="question4" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">5.我对未来的事情分析较准：</label>
+            <div class="col-sm-8">
+                <input name="question5" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">6.我为团队成功可以得罪人：</label>
+            <div class="col-sm-8">
+                <input name="question6" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">7.我善于外交：</label>
+            <div class="col-sm-8">
+                <input name="question7" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">8.我经常做而不是经常说：</label>
+            <div class="col-sm-8">
+                <input name="question8" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">9.我吃饭很在意营养而且并不多吃：</label>
+            <div class="col-sm-8">
+                <input name="question9" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">10.我每天睡眠平均不少于七小时：</label>
+            <div class="col-sm-8">
+                <input name="question10" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">11.我很平淡看待钱：</label>
+            <div class="col-sm-8">
+                <input name="question11" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">12.我时常忘记苦恼的事情：</label>
+            <div class="col-sm-8">
+                <input name="question12" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">13.我几乎没有仇人，我不恨别人，并不抱怨社会制度：</label>
+            <div class="col-sm-8">
+                <input name="question13" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">14.我每周都运动，不少于两小时：</label>
+            <div class="col-sm-8">
+                <input name="question14" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">15.我可以为了身体健康停下工作：</label>
+            <div class="col-sm-8">
+                <input name="question15" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">16.我明白不良的习惯对身体的危害：</label>
+            <div class="col-sm-8">
+                <input name="question16" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">17.我认为生命是艳丽的，我可以着装与众不同：</label>
+            <div class="col-sm-8">
+                <input name="question17" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">18.我没有手机简直不能生活：</label>
+            <div class="col-sm-8">
+                <input name="question18" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">19.我知道很多种时尚品牌：</label>
+            <div class="col-sm-8">
+                <input name="question19" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">20.我经常参加娱乐活动：</label>
+            <div class="col-sm-8">
+                <input name="question20" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">21.我身上至少有两件饰品，包括美丽的包：</label>
+            <div class="col-sm-8">
+                <input name="question21" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">22.我对一件物品动情即买之：</label>
+            <div class="col-sm-8">
+                <input name="question22" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">23.我经常没钱，并借钱，一年至少一次：</label>
+            <div class="col-sm-8">
+                <input name="question23" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">24.我对度假与玩有兴趣：</label>
+            <div class="col-sm-8">
+                <input name="question24" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">25.我想有更多的压力，只要事业更好：</label>
+            <div class="col-sm-8">
+                <input name="question25" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">26.我强调付出，从不强调收入：</label>
+            <div class="col-sm-8">
+                <input name="question26" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">27.我认为只要为公司着想，突破制度也有必要：</label>
+            <div class="col-sm-8">
+                <input name="question27" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">28.我想一生都不停工作：</label>
+            <div class="col-sm-8">
+                <input name="question28" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">29.我常常为公司发展写出报告或文字：</label>
+            <div class="col-sm-8">
+                <input name="question29" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">30.我经常谈出我对公司发展的看法：</label>
+            <div class="col-sm-8">
+                <input name="question30" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">31.我没有吃过回扣等公司严防的事情：</label>
+            <div class="col-sm-8">
+                <input name="question31" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">32.我经常做家务或公司事务，别人并没有要求的前提下：</label>
+            <div class="col-sm-8">
+                <input name="question32" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">33.我与别人谈话是为了影响或控制别人：</label>
+            <div class="col-sm-8">
+                <input name="question33" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">34.我没有给别人进行情感性打分：</label>
+            <div class="col-sm-8">
+                <input name="question34" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">35.我不会拍马屁：</label>
+            <div class="col-sm-8">
+                <input name="question35" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">36.我能控制混乱的局面：</label>
+            <div class="col-sm-8">
+                <input name="question36" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">37.我喜欢人力资源管理胜过研究与技术：</label>
+            <div class="col-sm-8">
+                <input name="question37" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">38.我想做管官的官，让下级为此而快乐：</label>
+            <div class="col-sm-8">
+                <input name="question38" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">39.我喜欢哲学，并了解宗教：</label>
+            <div class="col-sm-8">
+                <input name="question39" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">40.我认为能处理好下级的分配问题，让他们没有怨言：</label>
+            <div class="col-sm-8">
+                <input name="question40" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">41.我喜欢物理：</label>
+            <div class="col-sm-8">
+                <input name="question41" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">42.我有特殊的创意，并尝试有效果：</label>
+            <div class="col-sm-8">
+                <input name="question42" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">43.我有专利或专利级的产品或技术：</label>
+            <div class="col-sm-8">
+                <input name="question43" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">44.我学习力强并精通某一方面：</label>
+            <div class="col-sm-8">
+                <input name="question44" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">45.我不在意工作对我的汇报，而在于兴趣：</label>
+            <div class="col-sm-8">
+                <input name="question45" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">46.我经常思考或工作不知时间：</label>
+            <div class="col-sm-8">
+                <input name="question46" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">47.我爱看科普类栏目：</label>
+            <div class="col-sm-8">
+                <input name="question47" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">48.我逻辑力强：</label>
+            <div class="col-sm-8">
+                <input name="question48" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">49.我认为家是第一位：</label>
+            <div class="col-sm-8">
+                <input name="question49" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">50.我工作不是为了钱，而是情感：</label>
+            <div class="col-sm-8">
+                <input name="question50" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">51.我不说假话：</label>
+            <div class="col-sm-8">
+                <input name="question51" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">52.我为了爱人失去了很多：</label>
+            <div class="col-sm-8">
+                <input name="question52" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">53.我认为承诺比生命更重要：</label>
+            <div class="col-sm-8">
+                <input name="question53" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">54.我会因为情感而放弃工作或生活的城市：</label>
+            <div class="col-sm-8">
+                <input name="question54" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">55.我时常想起初恋：</label>
+            <div class="col-sm-8">
+                <input name="question55" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">56.我发现爱情对我的激励作用很大：</label>
+            <div class="col-sm-8">
+                <input name="question56" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">57.我经常原谅别人：</label>
+            <div class="col-sm-8">
+                <input name="question57" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">58.我认为我身后有追随者：</label>
+            <div class="col-sm-8">
+                <input name="question58" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">59.我认为自己有品位，而从不说脏话：</label>
+            <div class="col-sm-8">
+                <input name="question59" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">60.我是一个项目专家，并培训别人为胜任力者：</label>
+            <div class="col-sm-8">
+                <input name="question60" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">61.我出席各级名流活动：</label>
+            <div class="col-sm-8">
+                <input name="question61" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">62.我决不拿不属于自己的东西：</label>
+            <div class="col-sm-8">
+                <input name="question62" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">63.我教身边的人做好事：</label>
+            <div class="col-sm-8">
+                <input name="question63" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label class="col-sm-3 control-label">64.我赞同现行的规则，并主动提出见解而不是抱怨：</label>
+            <div class="col-sm-8">
+                <input name="question64" class="validate tm-input-white-bg" type="text">
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <button type="button" id="agree" class="waves-effect btn-large btn-large-white">提交</button>
+        </div>
+    </form>
+</div>
+<!--<th:block th:include="include :: footer" />-->
+<script type="text/javascript">
+    // var prefix = ctx + "system/questions"
+    $("#form-questions-add").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-questions-add').serialize());
+        }
+    }
+</script>
+</body>
+</html>

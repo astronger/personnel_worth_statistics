@@ -1,0 +1,32 @@
+server:
+  port: 9999
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/haorui?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 123456
+#  mvc:
+#    favicon:
+#      enabled: false
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    cache: false
+# pageHelper分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+#打印sql日志
+logging:
+  level:
+    com.haort.mapper: DEBUG
+#qiniu:
+#  accessKey: 8tVGegy2Ltk6z01PoFvx3Yo3RYY253LqTnxEcsRF     #上面的AK
+#  secretKey: _BTPwUydhIJ-gk5jjOs7ky1GpcPgaMjf-QVusD_u    #上面的SK
+#  bucketname: hugo-shop         #七牛云新建的存储空间
+#  prefixName: https:www.xxx.xxx  #免费试用30天或者绑定你自己的域名地址
+#  style: imageView2/0/q/75|watermark/1/image/aHR0cHM6Ly93d3cubHV4aWFvc29uZy50b3Avd3hjb2RlLmpwZw==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim

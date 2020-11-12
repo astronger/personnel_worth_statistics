@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深圳市xxx科技有限公司</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/zoomify.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/zoomify.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<!--    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="../static/favicon/favicon.ico">
+    <style>
+        .wrap { width: 600px; margin: 0 auto;}
+        .wrap img { max-width: 100%;}
+    </style>
+</head>
+<body>
+​
+<table class="table table-bordered">
+    <button class="alert-info"  onclick="window.location.href='/getAllUser'">答题名单</button>
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>截图</th>
+        <th>回复时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="resp:${list}">
+        <td th:text="${resp.id}"></td>
+        <td th:text="${resp.name}"></td>
+        <td th:text="${resp.phone}"></td>
+        <div class="wrap">
+        <td>
+            <img  class="zoomify"  style="width: auto;height: 100px" th:src="${resp.image}"/>
+        </td>
+        </div>
+
+        <td th:text="${resp.time}"></td>
+    </tr>
+    </tbody>
+
+
+</table>
+<ul class="pagination pagination-sm">
+    <li><a th:href="@{/getAllResp(currentPage=1)}">首页</a></li>
+    <li><a th:if="${pageInfo.isHasPreviousPage()} == true" th:href="@{/getAllResp(currentPage=${pageInfo.getPrePage()})}">&laquo;</a></li>
+    <li><a th:href="@{'/getAllResp?currentPage=' + ${i}}"  th:each="i :${#numbers.sequence(pageInfo.getPrePage(), pageInfo.getNextPage())}" th:text="  ${i}"   th:class="${pageInfo.getPages() == i}? 'page-item active' :' page-item' "></a></li>
+    <li> <a th:if="${pageInfo.isHasNextPage()} == true" th:href="@{/getAllResp(currentPage=${pageInfo.getNextPage()})}" >&raquo;</a></li>
+    <li> <a th:href="@{/getAllResp(currentPage=${pageInfo.getNavigateLastPage()})}" >尾页</a></li>
+</ul>
+<script>
+    $(function() {
+        $('.zoomify').zoomify();
+    });
+</script>
+</body>
+</html>

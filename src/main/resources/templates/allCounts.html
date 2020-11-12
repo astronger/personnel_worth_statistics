@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深圳市xxx科技有限公司</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/zoomify.min.js" type="text/javascript"></script>
+    <script src="js/rolldate.min.js" type="text/javascript" ></script>
+    <link rel="icon" type="image/x-icon" href="../static/favicon/favicon.ico">
+</head>
+<body>
+​
+<table class="table table-bordered">
+    <button class="alert-info"  onclick="window.location.href='getAllUser'">后台数据查询</button>
+    &nbsp;
+    <button class="alert-info"  onclick="window.location.href='getAllPages'">首页访问次数统计</button>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>提交成功次数</th>
+        <th>提交失败次数</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>创建时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="counts:${allCounts}">
+        <td th:text="${counts.id}"></td>
+        <td th:text="${counts.succesCounts}"></td>
+        <td th:text="${counts.failCounts}"></td>
+        <td th:text="${counts.startTime}"></td>
+        <td th:text="${counts.endTime}"></td>
+        <td th:text="${counts.createTime}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

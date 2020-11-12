@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深圳市xxx科技有限公司</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/zoomify.min.js" type="text/javascript"></script>
+    <script src="js/rolldate.min.js" type="text/javascript" ></script>
+    <link rel="icon" type="image/x-icon" href="../static/favicon/favicon.ico">
+    <style>
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .panel {
+            position: absolute;
+            padding: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 370px;
+            height: 600px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            background: #fff;
+            display: none;
+            z-index: 2;
+        }
+
+        .panel .close {
+            float: right;
+            margin-top: 1px;
+            margin-right: 5px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .panel .sure,
+        .panel .cancel {
+            border: 1px solid;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .zoomify{
+            margin-top: 10px;
+            width: 100% !important;
+            height: 526px !important;
+        }
+    </style>
+</head>
+<body>
+​
+<table class="table table-bordered">
+    <button class="alert-info"  onclick="window.location.href='printData'">导出表格</button>
+     &nbsp;
+    <button class="alert-info"  onclick="window.location.href='getAllPages'">首页访问次数统计</button>
+    &nbsp;
+    <button class="alert-info"  onclick="window.location.href='getAllCounts'">数据提交次数统计</button>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>公司</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>地址</th>
+        <th>是否是xxx客户</th>
+        <!--<th>奖品</th>-->
+       <!-- <th>截图</th>-->
+  <!--      <th>答案1</th>
+        <th>答案2</th>
+        <th>答案3</th>
+        <th>答案4</th>-->
+        <th>参与时间</th>
+        <th>期待发货时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="user:${list}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.company}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.address}"></td>
+        <td th:text="${user.hrts}"></td>
+      <!--  <td th:text="${user.prize}"></td>-->
+      <!--  <td id="" ><input type="button" th:onclick="'getImage(\''+${user.id}+'\');'" value="点我"></td>-->
+   <!--     <div class="wrap">
+            <td>
+                <img  class="zoomify"  style="width: auto;height: 100px" />
+            </td>
+        </div>-->
+<!--        <td th:text="${user.answer1}"></td>
+        <td th:text="${user.answer2}"></td>
+        <td th:text="${user.answer3}"></td>
+        <td th:text="${user.answer4}"></td>-->
+        <div th:text="${user.id}" style="display: none " id="userId" ></div>
+        <td th:text="${user.createTime}"></td>
+        <td th:text="${user.fahuoTime}"></td>
+    </tr>
+    </tbody>
+</table>
+<ul class="pagination pagination-sm">
+    <li><a th:href="@{/getAllUser(currentPage=1)}">首页</a></li>
+    <li><a th:if="${pageInfo.isHasPreviousPage()} == true" th:href="@{/getAllUser(currentPage=${pageInfo.getPrePage()})}">&laquo;</a></li>
+    <li><a th:href="@{'/getAllUser?currentPage=' + ${i}}"  th:each="i :${#numbers.sequence(pageInfo.getPrePage(), pageInfo.getNextPage())}" th:text="  ${i}"   th:class="${pageInfo.getPages() == i}? 'page-item active' :' page-item' "></a></li>
+    <li> <a th:if="${pageInfo.isHasNextPage()} == true" th:href="@{/getAllUser(currentPage=${pageInfo.getNextPage()})}" >&raquo;</a></li>
+    <li> <a th:href="@{/getAllUser(currentPage=${pageInfo.getNavigateLastPage()})}" >尾页</a></li>
+</ul>
+
+<form>
+    <div class="row">
+        <div class="form-group clearfix">
+            <div class="col-xs-6">
+                开始时间:<input readonly class="form-control" th:value="${confs.startTime}" type="text" id="beginTime">
+                结束时间:<input readonly class="form-control" th:value="${confs.endTime}" type="text" id="endTime">
+                设置每日报名人数上限:<input  class="form-control" th:value="${confs.people}" type="text" id="people">
+                <button type="button"   id="agree" class="waves-effect btn-large btn-large-white">提交</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="panel clearfix" id="show-img">
+    <div class="close" id="close-model">X</div>
+    <img  class="zoomify"  style="width: auto;height: 100px" id="jietu"/>
+</div>
+<script>
+    $(function() {
+        $('.zoomify').zoomify();
+    });
+    window.onload = function () {
+        // 分钟按指定数分隔
+        new Rolldate({
+            el: '#beginTime',
+            format: 'hh:mm',
+            minStep: 1
+        });
+        new Rolldate({
+            el: '#endTime',
+            format: 'hh:mm',
+            minStep: 1
+        })
+    }
+    var panel = $("#show-img");
+    var  closeDoc =  $("#close-model");
+    closeDoc[0].addEventListener("click", function() {
+        panel[0].style.display = "none";
+    })
+    function getImage(id){
+        console.log(panel[0].style)
+        panel[0].style.display = "block";
+          $.ajax({
+                   url:"/getImage",
+                   type:"get",
+                   data: {"id":id},
+                   success:function(data){
+                       console.log(data);
+                       if(200 == data.status){
+                           document.getElementById("jietu").setAttribute("src",data.data);
+                       }else if (400 == data.status){
+                           alert("未获取到图片")
+                           window.location.href = "/getAllUser";
+                       }
+                   },
+                   error:function(e){
+                       alert("服务器异常")
+                   }
+               });
+    }
+
+    $("#").click(function(){
+        var userId = document.getElementById("userId").innerText;
+
+    })
+
+
+
+    $("#agree").click(function(){
+        var beginTime = $("#beginTime").val();
+        var endTime = $("#endTime").val();
+        var people = $("#people").val();
+        if (beginTime == "" || beginTime == null) {
+            alert("请输入开始时间")
+            return false;
+        } else if (endTime == "" || endTime == null) {
+            alert("请输入结束时间")
+            return false;
+        }else if (people == "" || people == null) {
+            alert("请输入活动上限人数")
+            return false;
+        }
+        //数据
+        var data = {beginTime:beginTime,endTime:endTime,people:people};
+        Submission(data);
+    })
+    //提交的方法
+    function Submission(datavalue){
+        $.ajax({
+            url:"/addConfs",
+            type:"post",
+            data: datavalue,
+            success:function(data){
+                console.log(data);
+                if('success' == data){
+                    alert("提交成功")
+                }else if ('error' == data){
+                    window.location.href = "/getAllUser";
+                }
+            },
+            error:function(e){
+                alert("服务器异常")
+            }
+        });
+    }
+</script>
+</body>
+</html>
